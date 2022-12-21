@@ -39,11 +39,13 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res)=> {
     // to upload data into the server you have to state the data 
+    const Author = req.body.Author;
+    const title = req.body.title;
     const image = req.body.image;
-    const name = req.body.name;
+    const description = req.body.description
     
    
-    db.query("INSERT INTO genres (name, image) VALUES (?, ?) ",[name, image], (err, result) => {
+    db.query("INSERT INTO genres (Author, title, image, description) VALUES (?, ?, ?, ?) ",[Author, title, image, description], (err, result) => {
         if(err)
         {
             res.status(400).json(err)
