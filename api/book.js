@@ -26,7 +26,7 @@ const upload = multer({
 })
 router.get('/', (req, res) => {
     //step 1 select all elements in the table
-        db.query('SELECT * FROM genres', (err, result) => {
+        db.query('SELECT * FROM economic', (err, result) => {
             if(err) {
                 res.status(400).json(err)
             } else
@@ -45,7 +45,7 @@ router.post('/', (req, res)=> {
     const description = req.body.description
     
    
-    db.query("INSERT INTO genres (Author, title, image, description) VALUES (?, ?, ?, ?) ",[Author, title, image, description], (err, result) => {
+    db.query("INSERT INTO economic (Author, title, image, description) VALUES (?, ?, ?, ?) ",[Author, title, image, description], (err, result) => {
         if(err)
         {
             res.status(400).json(err)
