@@ -38,7 +38,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res)=> {
     // to upload data into the server you have to state the data 
     const newBooks = {
-        id: req.body.id,
         name: req.body.name,
         image: req.body.image
     }
