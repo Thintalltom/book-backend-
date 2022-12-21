@@ -43,7 +43,7 @@ router.post('/', (req, res)=> {
     const image = req.body.image;
     const values = [name, image]
    
-    db.query("INSERT INTO genres  SET ? ",values, (err, result) => {
+    db.query("INSERT INTO genres (name, image) VALUES (?, ?) ",[name, image], (err, result) => {
         if(err)
         {
             res.status(400).json(err)
