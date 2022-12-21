@@ -24,7 +24,36 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage
 })
+router.get('/', (req, res) => {
+    //step 1 select all elements in the table
+        db.query('SELECT * FROM books', (err, result) => {
+            if(err) {
+                res.status(400).json(err)
+            } else
+            {
+                res.json(result) 
+            }
+           
+        })
+})
 
+router.post('/', (req, res)=> {
+    // to upload data into the server you have to state the data 
+    const name = req.body.name;
+    const image = req.body.image;
+    const values = [name, image]
+   
+    db.query("INSERT INTO books (name, image) VALUES (?, ?) ",values, (err, result) => {
+        if(err)
+        {
+            res.status(400).json(err)
+        }else
+        {
+            res.status(200).json(result);
+        }
+    })
+    
+})
 
 
 
