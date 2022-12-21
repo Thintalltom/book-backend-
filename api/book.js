@@ -26,7 +26,7 @@ const upload = multer({
 })
 router.get('/', (req, res) => {
     //step 1 select all elements in the table
-        db.query('SELECT * FROM gneres', (err, result) => {
+        db.query('SELECT * FROM genres', (err, result) => {
             if(err) {
                 res.status(400).json(err)
             } else
