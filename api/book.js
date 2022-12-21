@@ -35,15 +35,15 @@ router.get('/', (req, res) => {
         })
 })
 
-router.post('/', upload.single('book'), (req, res)=> {
+router.post('/', (req, res)=> {
     // to upload data into the server you have to state the data 
     const newBooks = {
-        title: req.body.title,
-        Author: req.body.Author,
-        image: `https://book-backend-production.up.railway.app/books${req.file.filename}`
+        id: req.body.id,
+        name: req.body.name,
+        image: req.body.image
     }
    
-    db.query("INSERT INTO book set ? ",[newBooks], (err, result) => {
+    db.query("INSERT INTO books set ? ",[newBooks], (err, result) => {
         if(err)
         {
             res.status(400).json(err)
