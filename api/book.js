@@ -37,12 +37,10 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res)=> {
     // to upload data into the server you have to state the data 
-    const newBooks = {
-        name: req.body.name,
-        image: req.body.image
-    }
+    const name = req.body.name
+    const image= req.body.image
    
-    db.query("INSERT INTO books set ? ",[newBooks], (err, result) => {
+    db.query("INSERT INTO books (name, image) VALUES (?, ?)",[name, image], (err, result) => {
         if(err)
         {
             res.status(400).json(err)
