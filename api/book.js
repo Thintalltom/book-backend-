@@ -3,6 +3,7 @@ const router = express.Router()
 const multer =require('multer')
 let book = require('../book')
 const db= require('../config/database')
+const bodyParser = require('body-parser');
 
 db.connect((err) => {
     if(err) {
@@ -37,10 +38,11 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res)=> {
     // to upload data into the server you have to state the data 
-    const name = req.body.name
-    const image= req.body.image
+    const name = req.body.name;
+    const image = req.body.image;
+    const values = [name, image]
    
-    db.query("INSERT INTO books (name, image) VALUES (?, ?)",[name, image], (err, result) => {
+    db.query("INSERT INTO books (name, image) VALUES (?, ?) ",values, (err, result) => {
         if(err)
         {
             res.status(400).json(err)
