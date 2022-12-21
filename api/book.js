@@ -45,7 +45,7 @@ router.post('/', (req, res)=> {
     const description = req.body.description
     
    
-    db.query("INSERT INTO economic VALUES (?, ?, ?, ?) ",[Author, title, image, description], (err, result) => {
+    db.query("INSERT INTO economic VALUES (?, ?, ?, ?, ?) ",[Author, title, image, description], (err, result) => {
         if(err)
         {
             res.status(400).json(err)
