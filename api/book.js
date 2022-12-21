@@ -39,9 +39,9 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res)=> {
     // to upload data into the server you have to state the data 
-    const name = req.body.name;
     const image = req.body.image;
-    const values = [name, image]
+    const name = req.body.name;
+    
    
     db.query("INSERT INTO genres (name, image) VALUES (?, ?) ",[name, image], (err, result) => {
         if(err)
