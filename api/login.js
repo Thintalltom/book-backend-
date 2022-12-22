@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
             if(err) {
                 console.log(err)
             }
-            db.query("INSERT INTO login (email, password) VALUES (?, ?) ",[username, hash], (err, result) => {
+            db.query("INSERT INTO login (email, password) VALUES (?, ?) ",[email, hash], (err, result) => {
                 res.send(result)
                })
         }) 
