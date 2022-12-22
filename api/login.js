@@ -24,7 +24,10 @@ router.get('/', (req, res) => {
                 res.status(400).json(err)
             } else
             {
-                res.json(result) 
+                res.json({
+                    result,
+                    message:"You have successfully signed up"}
+                    ) 
                 res.send(result)
             }
            
@@ -38,15 +41,15 @@ router.get('/', (req, res) => {
             const email = req.body.email
             const password= req.body.password
         // to hash the password we use bcrypt.hash before the insert method
-        bcrypt.hash(password, saltRounds, (err, hash) => {
-            if(err) {
-                console.log(err)
-            }
-            db.query("INSERT INTO login (email, password) VALUES (?, ?) ",[username, hash], (err, result) => {
-                res.send({result,
-                    message:"You have successfully signed up"})
-               })
-        }) 
+            db.query("INSERT INTO login (email, password) VALUES (?, ?) ",[email, password], (err, result) => {
+                if(err)
+                {
+                    console.log(err)
+                    res.send(err)
+                }else{
+                    res.send(result)
+                }
+            })
 })
 
     
