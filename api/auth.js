@@ -3,6 +3,7 @@ const mysql = require('mysql2')
 const router = express.Router()
 const path = require('path')
 const bcrypt = require('bcrypt')
+let auth = require('../auth')
 const saltRounds = 10;
 const db= require('../config/database')
 
