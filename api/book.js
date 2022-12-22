@@ -4,6 +4,9 @@ const multer =require('multer')
 let book = require('../book')
 const db= require('../config/database')
 const bodyParser = require('body-parser');
+const fs = require('fs');
+
+const imageBuffer = fs.readFileSync('/path/to/image.jpg');
 
 db.connect((err) => {
     if(err) {
@@ -40,10 +43,10 @@ router.get('/', (req, res) => {
         })
 })
 
-router.post('/',upload.single('books'), (req, res)=> {
+router.post('/', (req, res)=> {
     const Author = req.body.Author;
     const title = req.body.title;
-    const image = req.file.filename
+    const image = ['image-name', imageBuffer]
     const description = req.body.description
 
     db.query("INSERT INTO economic (Author, title, image, description) VALUES (?,  ?, ?, ? ) ",[ Author, title, image, description], (err, result) => {
