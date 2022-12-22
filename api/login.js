@@ -38,15 +38,16 @@ router.get('/', (req, res) => {
             const email = req.body.email
             const password= req.body.password
         // to hash the password we use bcrypt.hash before the insert method
-        bcrypt.hash(password, saltRounds, (err, hash) => {
-            if(err) {
-                console.log(err)
-            }
-            db.query("INSERT INTO login (email, password) VALUES (?, ?) ",[email, hash], (err, result) => {
-                res.send(result)
-               })
-        }) 
-    })
+            db.query("INSERT INTO login (email, password) VALUES (?, ?) ",[email, password], (err, result) => {
+                if(err)
+                {
+                    console.log(err)
+                    res.send(err)
+                }else{
+                    res.send(result)
+                }
+            })
+})
 
     
 module.exports = router
