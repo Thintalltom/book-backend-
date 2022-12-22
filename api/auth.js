@@ -19,11 +19,11 @@ db.connect((err) => {
 // using bcrypt to hash the password to save the password in an hashed mode
 router.post('/',  (req, res)=> {
     // to upload the data of the user 
-        const username = req.body.username
+        const email = req.body.email
         const password= req.body.password
     // to check if the user details are present in the MYSQL database 
     db.query("SELECT * FROM login WHERE email = ? ",
-    username, (err, result) => {
+    email, (err, result) => {
             if(err) {
                 console.log(err)
             }
