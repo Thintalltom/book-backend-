@@ -24,7 +24,10 @@ router.get('/', (req, res) => {
                 res.status(400).json(err)
             } else
             {
-                res.json(result) 
+                res.json({
+                    result,
+                    message:"You have successfully signed up"}
+                    ) 
                 res.send(result)
             }
            
