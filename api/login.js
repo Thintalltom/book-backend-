@@ -9,7 +9,7 @@ let login = require('../login')
 //salRounds determines the amount of time needed to hash the password
 const saltRounds = 10;
 const db= require('../config/database')
-
+const jwt = require('jsonwebtoken')
 db.connect((err) => {
     if(err) {
         throw err
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
             } else
             {
                 res.json(result) 
-                res.send(result)
+                res.send({message: 'wrong user combination'})
             }
            
         })
