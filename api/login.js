@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
 
     router.post('/',  (req, res)=> {
         // to upload data into the server you have to state the data 
-            const username = req.body.username
+            const email = req.body.email
             const password= req.body.password
         // to hash the password we use bcrypt.hash before the insert method
         bcrypt.hash(password, saltRounds, (err, hash) => {
