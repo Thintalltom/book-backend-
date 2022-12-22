@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.post('/',upload.single('books'), (req, res)=> {
+router.post('/', (req, res)=> {
     const Author = req.body.Author;
     const title = req.body.title;
     const image =  Buffer.from(data).toString('utf8');
