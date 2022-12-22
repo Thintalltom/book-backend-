@@ -30,8 +30,6 @@ router.post('/',  (req, res)=> {
             if(result.length > 0) {
                 bcrypt.compare(password, result[0].password, (err, response) => {
                     if(response){
-                        req.session.user = result
-                        console.log(req.session.user)
                         res.send(result)
                     }else
                     {
@@ -45,12 +43,6 @@ router.post('/',  (req, res)=> {
     
 })
 
-router.get('/', (req, res) => {
-    if(req.session.user){
-        res.send({loggedIn: true, user: req.session.user})
-    } else {
-        res.send({loggedIn: false})
-    }
-})
+
 
 module.exports = router
