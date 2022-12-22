@@ -12,21 +12,9 @@ db.connect((err) => {
     console.log('connected to db')
 })
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './upload/images')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-    }
-})
 
-const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1024 * 1024 * 5
-      },
-})
+const upload = multer({ dest: 'tmp/' })
+
 router.get('/', (req, res) => {
     //step 1 select all elements in the table
         db.query('SELECT * FROM economic', (err, result) => {
@@ -44,7 +32,7 @@ router.get('/', (req, res) => {
 router.post('/',upload.single('books'), (req, res)=> {
     const Author = req.body.Author;
     const title = req.body.title;
-    const image = `https://book-backend-production.up.railway.app/books/${req.file.filename}`
+    const image = req.file
     const description = req.body.description
 
     db.query("INSERT INTO economic (Author, title, image, description) VALUES (?,  ?, ?, ? ) ",[ Author, title, image, description], (err, result) => {
