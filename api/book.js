@@ -22,11 +22,9 @@ const storage = multer.diskStorage({
 })
 
 
+//function for upload image
 const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1024 * 1024 * 5
-      },
+    storage: storage
 })
 router.get('/', (req, res) => {
     //step 1 select all elements in the table
@@ -42,7 +40,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.post('/',upload.single('books'), (req, res)=> {
+router.post('/', upload.single('books'), (req, res)=> {
     const Author = req.body.Author;
     const title = req.body.title;
     const image = `https://book-backend-production.up.railway.app/books/${req.file.filename}`
