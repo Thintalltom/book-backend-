@@ -22,22 +22,17 @@ router.post('/',  (req, res)=> {
         const email = req.body.email
         const password= req.body.password
     // to check if the user details are present in the MYSQL database 
-    db.query("SELECT * FROM login WHERE email = ? ",
-    email, (err, result) => {
+    db.query("SELECT * FROM login WHERE email = ? AND password = ? ",
+    [email, password], (err, result) => {
             if(err) {
                 console.log(err)
             }
-            if(result.length > 0) {
-                bcrypt.compare(password, result[0].password, (err, response) => {
-                    if(response){
-                        res.send(result)
-                    }else
-                    {
-                        res.send({message: 'Wrong user Combination'})
-                    }
-                })
-            } else {
-                res.send({message: 'User does not exist !!'})
+            if(result.length > 0 )
+            {
+                res.send(result)
+            } else 
+            {
+                res.send({message: 'wrong username and password'})
             }
     })
     
