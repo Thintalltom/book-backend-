@@ -16,7 +16,7 @@ app.use('/auth', require('./api/auth'))
 app.use('/genres', require('./api/genres'))
 app.use('/documentary', require('./api/documentary'))
 app.use('/kidsbook', require('./api/kidsbook'))
-app.use('/economics', require('./api/economics'))
+app.use('/economics', require('./api/economic'))
 app.use('/programming', require('./api/programming'))
 app.listen(process.env.PORT || PORT, () => {
     console.log('nOW ON PORT 5000')
