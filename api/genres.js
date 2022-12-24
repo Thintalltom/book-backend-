@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const genres = require('../Genre')
+const genres = require('../genres')
 const multer = require('multer')
 const path = require('path')
 const mysql = require('mysql2')
