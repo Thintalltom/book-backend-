@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
 router.post('/',  (req, res) => {
     const newGenres = {
         name: req.body.name,
-        img: req.file.filename
+        img: req.body.image
     }
     
     db.query('INSERT INTO genres set ? ', [newGenres], (err, result) => {

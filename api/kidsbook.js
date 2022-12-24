@@ -46,7 +46,7 @@ router.post('/', (req, res)=> {
     const newBooks = {
         title: req.body.title,
         Author: req.body.Author,
-        image: req.file.filename,
+        image: req.body.image,
         description: req.body.description
    }
    

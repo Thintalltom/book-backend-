@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res)=> {
     const author = req.body.author;
     const title = req.body.title;
-    const image = req.file.filename
+    const image = req.body.image
 
 
     db.query("INSERT INTO economic (author, title, image) VALUES (?,  ?, ?, ? ) ",[ author, title, image], (err, result) => {
