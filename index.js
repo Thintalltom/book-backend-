@@ -13,7 +13,7 @@ app.use('/books',express.static('./upload/images') )
 app.use('/books', require('./api/book'))
 app.use('/login', require('./api/login'))
 app.use('/auth', require('./api/auth'))
-app.use('/genres', require('./api/genre'))
+app.use('/genres', require('./api/genres'))
 app.use('/documentary', require('./api/documentary'))
 app.use('/kidsbook', require('./api/kidsbook'))
 app.listen(process.env.PORT || PORT, () => {
