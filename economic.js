@@ -1,5 +1,5 @@
-const economics = [
+const economic = [
     
 
 ]
-module.exports = economics;
+module.exports = economic;
