@@ -40,10 +40,10 @@ router.get('/', (req, res) => {
 })
 
 
-router.post('/', upload.single('books'), (req, res)=> {
+router.post('/', (req, res)=> {
     const author = req.body.author;
     const title = req.body.title;
-    const image = `https://book-backend-production.up.railway.app/books/${req.file.filename}`
+    const image = req.file.filename
 
 
     db.query("INSERT INTO economic (author, title, image) VALUES (?,  ?, ?, ? ) ",[ author, title, image], (err, result) => {
