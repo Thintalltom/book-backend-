@@ -87,8 +87,8 @@ router.put('/:id', upload.single('file'), (req, res) => {
     const data = req.params.id
     const Author = req.body.author
     const title =  req.body.title
-    const image = `http://localhost:4001/books/${req.file.filename}`
-    const book =  `http://localhost:4001/books/${req.Pdf.Pdfname}`
+    const image = `https://book-backend-production.up.railway.app/addbook/${req.file.filename}`
+    const book =  `https://book-backend-production.up.railway.app/addbook/${req.Pdf.Pdfname}`
         
 
     db.query('UPDATE addbook SET `Author` = ?, `title` = ?,  `image` = ?, `book` = ? WHERE idaddbook = ?', [Author, title, image, data, book], (err, result) => {
