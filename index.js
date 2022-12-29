@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 const PORT = 5000
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.use('/books',express.static('./upload/images') )
+app.use('/books',express.static('./upload') )
 app.use(express.static('public'))
 app.use(express.static('upload'))
 app.use('/books', require('./api/book'))
