@@ -6,9 +6,10 @@ const mysql = require ('mysql2')
 const path = require('path')
 const db= require('../config/database')
 
+//an upload folder must be created 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './upload/images')
+        cb(null, './upload')
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
@@ -41,6 +42,7 @@ router.get('/', (req, res) => {
            
         })
 })
+//function to add file  into an sql database 
 
 router.post('/',  upload.single('file'), (req, res) => {
 
