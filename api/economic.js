@@ -45,7 +45,8 @@ router.post('/', (req, res)=> {
         title: req.body.title,
         Author: req.body.Author,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        book: req.body.book
    }
    
    db.query("INSERT INTO economic set ? ",[newBooks], (err, result) => {
@@ -65,7 +66,7 @@ router.post('/', (req, res)=> {
 router.get('/:id', (req, res) => {
     const data = req.params.id
 
-    db.query('SELECT  `Author`, `title`, `image`, `description` FROM economic WHERE ideconomic = ?', [data], (err, result) => {
+    db.query('SELECT  `Author`, `title`, `image`, `description`, `book` FROM economic WHERE ideconomic = ?', [data], (err, result) => {
         if(err){
             res.status(400).json(err)
         }else 
