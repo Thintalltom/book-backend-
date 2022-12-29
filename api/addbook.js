@@ -51,7 +51,7 @@ router.post('/',  upload.single('file'), (req, res) => {
                 image: `https://book-backend-production.up.railway.app/addbook/${req.file.filename}`,
                 title: req.body.title,
                 author: req.body.author,
-                book: `http://localhost:4001/books/${req.Pdf.Pdfname}`
+                book: `https://book-backend-production.up.railway.app/addbook/${req.Pdf.Pdfname}`
             }
 
             db.query("INSERT INTO addbook set ?", [data], (err, result) => {
