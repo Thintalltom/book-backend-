@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './upload')
     },
-// the filename must be stated in order to show teh names and location of the file
+// the filename must be stated in order to show teh names and location of the
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
     }
@@ -50,8 +50,10 @@ router.post('/',  upload.single('file'), (req, res) => {
             const data = {
                 image: `https://book-backend-production.up.railway.app/addbook/${req.file.filename}`,
                 title: req.body.title,
-                author: req.body.author
+                author: req.body.author,
+                book: `http://localhost:4001/books/${req.Pdf.Pdfname}`
             }
+
             db.query("INSERT INTO addbook set ?", [data], (err, result) => {
                 if(err)
                 {
@@ -86,9 +88,10 @@ router.put('/:id', upload.single('file'), (req, res) => {
     const Author = req.body.author
     const title =  req.body.title
     const image = `http://localhost:4001/books/${req.file.filename}`
+    const book =  `http://localhost:4001/books/${req.Pdf.Pdfname}`
         
 
-    db.query('UPDATE addbook SET `Author` = ?, `title` = ?,  `image` = ? WHERE idaddbook = ?', [Author, title, image, data], (err, result) => {
+    db.query('UPDATE addbook SET `Author` = ?, `title` = ?,  `image` = ?, `book` = ? WHERE idaddbook = ?', [Author, title, image, data, book], (err, result) => {
         if(err)
         {
             res.status(400).json(err)
