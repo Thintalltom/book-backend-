@@ -47,7 +47,8 @@ router.post('/', (req, res)=> {
         title: req.body.title,
         Author: req.body.Author,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        book: req.body.book
    }
    
    db.query("INSERT INTO kids set ? ",[newBooks], (err, result) => {
