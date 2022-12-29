@@ -45,13 +45,13 @@ router.get('/', (req, res) => {
 })
 //function to add file  into an sql database 
 
-router.post('/',  upload.single('file'), (req, res) => {
+router.post('/',   upload.array('files', 2), (req, res) => {
 
             const data = {
                 image: `https://book-backend-production.up.railway.app/addbook/${req.file.filename}`,
                 title: req.body.title,
                 author: req.body.author,
-                book: `https://book-backend-production.up.railway.app/addbook/${req.Pdf.Pdfname}`
+                book: `https://book-backend-production.up.railway.app/addbook/${req.file.filename}`
             }
 
             db.query("INSERT INTO addbook set ?", [data], (err, result) => {
