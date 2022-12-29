@@ -26,12 +26,7 @@ router.post('/',  (req, res)=> {
             if(err) {
                 console.log(err)
             }
-            if(result.length > 0 )
-            {
-                res.send({result,
-                message: 'You have successfully logged in'
-                })
-            } else 
+             else 
             {
                 res.send({message: 'wrong username and password'})
             }
