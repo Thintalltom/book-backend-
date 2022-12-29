@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.post('/',  upload.array('file'), (req, res)=> {
+router.post('/',  upload.single('file'), (req, res)=> {
     const author = req.body.author;
     const title = req.body.title;
     const image = `https://book-backend-production.up.railway.app/addbook/${req.file.filename}`
