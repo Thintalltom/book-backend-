@@ -11,6 +11,7 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './upload')
     },
+// the filename must be stated in order to show teh names and location of the file
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
     }
