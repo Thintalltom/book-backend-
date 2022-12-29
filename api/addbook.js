@@ -45,7 +45,7 @@ router.get('/', (req, res) => {
 router.post('/',  upload.single('file'), (req, res) => {
 
             const data = {
-                image: `http://localhost:4001/books/${req.file.filename}`,
+                image: `https://book-backend-production.up.railway.app/addbook/${req.file.filename}`,
                 title: req.body.title,
                 author: req.body.author
             }
