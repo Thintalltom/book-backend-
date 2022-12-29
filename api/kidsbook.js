@@ -68,7 +68,7 @@ router.post('/', (req, res)=> {
 router.get('/:id', (req, res) => {
     const data = req.params.id
 
-    db.query('SELECT  `Author`, `title`, `image`, `description` FROM kids WHERE idkid = ?', [data], (err, result) => {
+    db.query('SELECT  `Author`, `title`, `image`, `description`, `book` FROM kids WHERE idkid = ?', [data], (err, result) => {
         if(err){
             res.status(400).json(err)
         }else 
